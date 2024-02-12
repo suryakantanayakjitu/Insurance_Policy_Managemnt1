@@ -1,0 +1,59 @@
+<div class="p-3">
+  <!-- Add New Policy Button -->
+  <div>
+    <button class="btn btn-success mb-3" (click)="openform()">Add New Policy</button>
+  </div>
+
+  <!-- Show Policies Section -->
+  <div>
+    <h3>Policies</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Policy Id</th>
+          <th>Policy Category</th>
+          <th>Premium</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of policies">
+          <td>{{ policy.PolicyId }}</td>
+          <td>{{ policy.PolicyCategory }}</td>
+          <td>{{ policy.Premium }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="openform(policy)">Update</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deletePolicy(policy.PolicyId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="form-wrapper" *ngIf="showform">
+    <div class="policyform">
+      <h2 class="text-dark text-center">{{formheader}}</h2>
+      <div class="group">
+        <label for="PolicyId">Policy Id</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyId" name="PolicyId" required>
+      </div>
+      <div class="group">
+        <label for="PolicyCategory">Policy Category</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyCategory" name="PolicyCategory" required>
+      </div>
+      <div class="group">
+        <label for="PolicyPremium">Policy Premium</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyPremium" name="PolicyPremium" required>
+      </div>
+
+      <div class="action" style="margin-top: 20px;">
+        <button style="margin-inline: 10px;" id="savepolicy" class="btn btn-primary save" (click)="savepolicy()">Save Changes</button>  
+        <button style="margin-right: 0px;" id="update" class="btn btn-success cancel" (click)="update()">Update</button> 
+        <button style="margin-inline: 10px;" class="btn btn-danger cancel" (click)="closeform()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

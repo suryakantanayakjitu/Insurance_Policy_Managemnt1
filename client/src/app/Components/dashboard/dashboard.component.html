@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Admin Profile Section -->
+    <div style="min-height: 93vh; background-color: rgb(170, 170, 51);" class="col-md-2 p-3">
+      <h3>{{username}} Profile</h3>
+      <!-- Add your admin profile details here -->
+      <!-- For example, name, email, etc. -->
+      <button style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(1)">Load Policies Page</button> <br>
+      <button style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(2)">Load Policy Holder Page</button> <br>
+      <button style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(3)">View Applied Policy Page</button> <br>
+    </div>
+    
+    <!-- Policies / Policy Holders Section -->
+    <div class="col-md-9">
+
+      <div>
+        <img *ngIf="tabIndex === 0" src="/assets/pexels-rachel-claire-6127330.jpg" alt="">
+      </div>
+      <!-- Show Policies Section -->
+      <div>
+        <app-policy *ngIf="tabIndex === 1"></app-policy>
+      </div>
+
+      <!-- Show Policy Holders Section -->
+      <div>
+        <app-policy-details *ngIf="tabIndex === 2"></app-policy-details>
+      </div>
+
+      <!-- View User Policy Applied Section -->
+      <div>
+        <app-view-applied-policy *ngIf="tabIndex === 3"></app-view-applied-policy>
+      </div>
+    </div>
+    
+  </div>
+</div>

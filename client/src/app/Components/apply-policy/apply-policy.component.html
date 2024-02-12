@@ -1,0 +1,23 @@
+<div>
+  <h2>Available Policies</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Policy Name</th>
+        <th>Category</th>
+        <th>Premium</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policy of policies">
+        <td>{{ policy.PolicyId }}</td>
+        <td>{{ policy.PolicyCategory }}</td>
+        <td>{{ policy.Premium }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="applyForPolicy(policy)">Apply</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

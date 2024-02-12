@@ -1,0 +1,340 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Admin Profile Section -->
+    <div class="col-md-2 bg-light p-3">
+      <h3>Admin Profile</h3>
+      <!-- Added admin profile details here -->
+      <button class="btn btn-primary mt-3" (click)="showPolicies()">Show Policies</button><br>
+      <button class="btn btn-primary mt-3" (click)="showPolicyHolders()">Show Policy Holders</button>
+    </div>
+    <!-- Policies / Policy Holders Section -->
+    <div class="col-md-9 p-3">
+      <!-- Show Policies Section -->
+      <div *ngIf="showPoliciesFlag">
+        <h3>Policies</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Policy Id</th>
+              <th>Policy Category</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of policies">
+              <td>{{ policy.PolicyId }}</td>
+              <td>{{ policy.PolicyCategory }}</td>
+              <td>{{ policy.Premium }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Show Policy Holders Section -->
+      <div *ngIf="showPolicyHoldersFlag">
+        <h3>Policy Holders</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Policy ID</th>
+              <th>Policy Name</th>
+              <th>Policy Category</th>
+              <th>Policy Description</th>
+              <th>Policy Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policyHolder of policyHolders">
+              <td>{{ policyHolder.PolicyId }}</td>
+              <td>{{ policyHolder.PolicyName }}</td>
+              <td>{{ policyHolder.PolicyCategory }}</td>
+              <td>{{ policyHolder.PolicyDescription }}</td>
+              <td>{{ policyHolder.PolicyPremium }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
+})
+export class DashboardComponent implements OnInit {
+  showPoliciesFlag: boolean = false;
+  showPolicyHoldersFlag: boolean = false;
+  policies: any[] = [];
+  policyHolders: any[] = [];
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    // Fetch initial data if needed
+  }
+
+  showPolicies(): void {
+    this.showPoliciesFlag = true;
+    this.showPolicyHoldersFlag = false;
+    this.http.get<any[]>('http://localhost:3005/api/getPolicies').subscribe(
+      (data: any[]) => {
+        this.policies = data;
+      },
+      (error) => {
+        console.error('Error fetching policies:', error);
+        // Handle error
+      }
+    );
+  }
+
+  showPolicyHolders(): void {
+    this.showPoliciesFlag = false;
+    this.showPolicyHoldersFlag = true;
+    this.http.get<any[]>('http://localhost:3005/api/getPolicyHolderDetails').subscribe(
+      (data: any[]) => {
+        this.policyHolders = data;
+      },
+      (error) => {
+        console.error('Error fetching policy holders:', error);
+        // Handle error
+      }
+    );
+  }
+}
+
+
+
+1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Admin Profile Section -->
+    <div class="col-md-2 bg-light p-3">
+      <h3>Admin Profile</h3>
+      <!-- Add your admin profile details here -->
+      <!-- For example, name, email, etc. -->
+      <button class="btn btn-primary mt-3" (click)="showPolicies()">Show Policies</button> <br>
+      <!-- <button class="btn btn-primary mt-3" (click)="onTabClick(1)">Load Policy Holder Page</button> <br> -->
+      <button class="btn btn-primary mt-3" (click)="showPolicyHolders()">Show Policy Holders</button>
+    </div>
+    <!-- Policies / Policy Holders Section -->
+    <div class="col-md-9 p-3">
+      <!-- Add New Policy Button -->
+      <div>
+        Policy Id: <input type="text" id="newPolicyId">
+        Policy Category: <input type="text" id="newPolicyCategory">
+        Policy Premium: <input type="text" id="newPolicyPremium">
+        <button class="btn btn-success mb-3" (click)="addNewPolicy()">Add New Policy</button>
+      </div>
+      
+      <!-- Show Policies Section -->
+      <div *ngIf="showPoliciesFlag">
+        <h3>Policies</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Policy Id</th>
+              <th>Policy Category</th>
+              <th>Premium</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of policies">
+              <td>{{ policy.PolicyId }}</td>
+              <td>{{ policy.PolicyCategory }}</td>
+              <td>{{ policy.Premium }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="updatePolicy(policy)">Update</button>
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deletePolicy(policy._id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Show Policy Holders Section -->
+      <div *ngIf="showPolicyHoldersFlag">
+        <h3>Policy Holders</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Policy ID</th>
+              <th>Policy Name</th>
+              <th>Policy Category</th>
+              <th>Policy Description</th>
+              <th>Policy Premium</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policyHolder of policyHolders">
+              <td>{{ policyHolder.PolicyId }}</td>
+              <td>{{ policyHolder.PolicyName }}</td>
+              <td>{{ policyHolder.PolicyCategory }}</td>
+              <td>{{ policyHolder.PolicyDescription }}</td>
+              <td>{{ policyHolder.PolicyPremium }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="updatePolicyHolder(policyHolder)">Update</button>
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deletePolicyHolder(policyHolder._id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <app-policy-details *ngIf="tabIndex === 1"></app-policy-details>
+    </div>
+  </div>
+</div>
+
+
+
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
+})
+
+export class DashboardComponent implements OnInit {
+  showPoliciesFlag: boolean = false;
+  showPolicyHoldersFlag: boolean = false;
+  policies: any[] = [];
+  policyHolders: any[] = [];
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    // Fetch initial data if needed
+  }
+
+  tabIndex: any;
+  onTabClick(index: number) {
+    this.tabIndex = index;
+  }
+
+  showPolicies(): void {
+    this.showPoliciesFlag = true;
+    this.showPolicyHoldersFlag = false;
+    this.http.get<any[]>('http://localhost:3005/api/getPolicies').subscribe(
+      (data: any[]) => {
+        this.policies = data;
+      },
+      (error) => {
+        console.error('Error fetching policies:', error);
+        // Handle error
+      }
+    );
+  }
+
+  showPolicyHolders(): void {
+    this.showPoliciesFlag = false;
+    this.showPolicyHoldersFlag = true;
+    this.http.get<any>('http://localhost:3005/api/getPolicyHolderDetails').subscribe(
+      (data: any) => {
+        this.policyHolders = data;
+      },
+      (error) => {
+        console.error('Error fetching policy holders:', error);
+      }
+    );
+  }
+
+  addNewPolicy(): void {
+    var policyid = (<HTMLInputElement>document.getElementById("newPolicyId")).value;
+    var policycategory = (<HTMLInputElement>document.getElementById("newPolicyCategory")).value;
+    var premium = (<HTMLInputElement>document.getElementById("newPolicyPremium")).value;
+
+    // var formData = new FormData;
+    // formData.append("newPolicyId",newPolicyId);
+    // formData.append("newPolicyCategory",newPolicyCategory);
+    // formData.append("newPolicyPremium",newPolicyPremium);
+
+    const newPolicy = {
+      PolicyId: policyid,
+      PolicyCategory: policycategory,
+      PolicyPremium: premium
+    };
+    this.http.post('http://localhost:3005/api/addPolicy', newPolicy).subscribe(
+      (data) => {
+        console.log("Policies added successfully:", data);
+        alert(data);
+        // this.showPolicies();
+      })
+  }
+
+  updatePolicy(policy: any): void {
+    const policyId = policy._id;
+    this.http.put<any>(`http://localhost:3005/api/updatePolicy/${policyId}`, policy).subscribe(
+      (data: any) => {
+        console.log('Policy updated successfully:', data);
+        // Optionally, update the local policies array or refresh the data
+      },
+      (error) => {
+        console.error('Error updating policy:', error);
+      }
+    );
+  }
+
+  deletePolicy(policyId: string): void {
+    this.http.delete<any>(`http://localhost:3005/api/deletePolicy/${policyId}`).subscribe(
+      () => {
+        console.log('Policy deleted successfully');
+        // Optionally, update the local policies array or refresh the data
+      },
+      (error) => {
+        console.error('Error deleting policy:', error);
+      }
+    );
+  }
+
+  updatePolicyHolder(policyHolder: any): void {
+    const policyHolderId = policyHolder._id;
+    this.http.put<any>(`http://localhost:3005/api/updatePolicyHolder/${policyHolderId}`, policyHolder).subscribe(
+      (data: any) => {
+        console.log('Policy holder updated successfully:', data);
+        // Optionally, update the local policy holders array or refresh the data
+      },
+      (error) => {
+        console.error('Error updating policy holder:', error);
+      }
+    );
+  }
+
+  deletePolicyHolder(policyHolderId: string): void {
+    this.http.delete<any>(`http://localhost:3005/api/deletePolicyHolder/${policyHolderId}`).subscribe(
+      () => {
+        console.log('Policy holder deleted successfully');
+        // Optionally, update the local policy holders array or refresh the data
+      },
+      (error) => {
+        console.error('Error deleting policy holder:', error);
+      }
+    );
+  }
+}
+
+
+
+222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222

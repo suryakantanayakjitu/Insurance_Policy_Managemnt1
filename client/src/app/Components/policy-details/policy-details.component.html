@@ -1,0 +1,72 @@
+<div  class="p-3">
+  <!-- Add New Policy Button -->
+  <div>
+    <button class="btn btn-success mb-3" (click)="openform()">Add New Policy Holder</button>
+  </div>
+
+  <!-- Show Policy Holders Section -->
+  <div>
+    <h3>Policy Holders</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Policy ID</th>
+          <th>Policy Name</th>
+          <th>Policy Category</th>
+          <th>Policy Description</th>
+          <th>Policy Premium</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policyHolder of policyHoldersDetails">
+          <td>{{ policyHolder.PolicyId }}</td>
+          <td>{{ policyHolder.PolicyName }}</td>
+          <td>{{ policyHolder.PolicyCategory }}</td>
+          <td>{{ policyHolder.PolicyDescription }}</td>
+          <td>{{ policyHolder.PolicyPremium }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="openform(policyHolder)">Update</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deletePolicyHolderDetails(policyHolder.PolicyId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="form-wrapper" *ngIf="showform">
+    <div class="policyholderform">
+      <h2 class="text-dark text-center">{{formheader}}</h2>
+      <div class="group">
+        <label for="PolicyId">Policy Id</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyId" name="PolicyId" required>
+      </div>
+      <div class="group">
+        <label for="PolicyName">Policy Holder Name</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyName" name="PolicyName" required>
+      </div>
+      <div class="group">
+        <label for="PolicyCategory">Policy Category</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyCategory" name="PolicyCategory" required>
+      </div>
+      <div class="group">
+        <label for="PolicyDescription">Policy Description</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyDescription" name="PolicyDescription" required>
+      </div>
+      <div class="group">
+        <label for="PolicyPremium">Policy Premium</label>
+        <input type="text" class="form-control" [(ngModel)]="PolicyPremium" name="PolicyPremium" required>
+      </div>
+
+      <div class="action" style="margin-top: 20px;">
+        <button style="margin-inline: 10px;" id="savepolicyholderDetails" class="btn btn-primary save" (click)="savePolicyHolderDetails()">Add</button>  
+        <button style="margin-right: 0px;" id="updatedetails" class="btn btn-success cancel" (click)="updatePolicyHolderDetails()">Update</button> 
+        <button style="margin-inline: 10px;" class="btn btn-danger cancel" (click)="closeform()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
