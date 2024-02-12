@@ -1,31 +1,35 @@
 <div class="container-fluid">
-    <div class="row">
-      <!-- Admin Profile Section -->
-      <div style="min-height: 93vh; background-color: rgb(170, 170, 51);" class="col-md-2 p-3">
-        <h3>{{username}} Profile</h3>
-        <!-- Add your admin profile details here -->
-        <!-- For example, name, email, etc. -->
-        <button style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(0)">Apply Policy</button> <br>
-        <!-- <button  style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(1)">Load Policy Holder Page</button> <br> -->
-      </div>
-      
-      <!-- Policies / Policy Holders Section -->
-      <div class="col-md-9">
-  
-        <div>
-          <!-- <img *ngIf="tabIndex === 2" src="/assets/pexels-rachel-claire-6127330.jpg" alt=""> -->
-        </div>
-        <!-- Show Policies Section -->
-        <div>
-          <app-apply-policy *ngIf="tabIndex === 0"></app-apply-policy>
-        </div>
-  
-        <!-- Show Policy Holders Section -->
-        <div>
-          <!-- <app-policy-details *ngIf="tabIndex === 1"></app-policy-details> -->
-        </div>
-      </div>
-      
+  <div class="row">
+    <!-- Admin Profile Section -->
+    <div style="min-height: 93vh; background-color: rgb(170, 170, 51);" class="col-md-2 p-3">
+      <h3>{{username}} Profile</h3>
+      <!-- Add your admin profile details here -->
+      <!-- For example, name, email, etc. -->
+      <button style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(0)">Apply Policy</button> <br>
+      <button style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(1)">Question</button> <br>
+      <!-- <button  style="width: 100%;" class="btn btn-primary mt-3" (click)="onTabClick(1)">Load Policy Holder Page</button> <br> -->
     </div>
+
+    <!-- Policies / Policy Holders Section -->
+    <div class="col-md-9">
+
+      <div>
+        <!-- <img *ngIf="tabIndex === 2" src="/assets/pexels-rachel-claire-6127330.jpg" alt=""> -->
+      </div>
+      <!-- Show Policies Section -->
+      <div>
+        <app-apply-policy *ngIf="tabIndex === 0"></app-apply-policy>
+      </div>
+
+      <div>
+        <app-user-question *ngIf="tabIndex=== 1"></app-user-question>
+      </div>
+
+      <!-- Show Policy Holders Section -->
+      <div>
+        <!-- <app-policy-details *ngIf="tabIndex === 1"></app-policy-details> -->
+      </div>
+    </div>
+
   </div>
-  
+</div>

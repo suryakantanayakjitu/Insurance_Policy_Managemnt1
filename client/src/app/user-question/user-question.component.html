@@ -1,0 +1,45 @@
+<div class="container">
+   
+  
+    <label for="subject">Type Your Question</label>
+    <textarea id="subject" name="subject"  [(ngModel)]="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    
+    <button class="btn btn-primary post" (click)="postquery()"> Post</button>
+
+  
+</div> <hr>
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <h2>Pervious Questions</h2>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>question</th>
+                      <th>date</th>
+                      <th>comment</th>
+                      <th>cdate</th>
+                     
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <!-- <tr *ngFor="let query of policies"> -->
+                  <tr *ngFor="let query of result">
+                      <td>{{ query.id }}</td>
+                      <td>{{ query.question }}</td>
+                      <td>{{ query.date}}</td>
+                      <td>{{ query.comment  }}</td>
+                      <td>{{ query.cdate}}</td>
+                       
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+

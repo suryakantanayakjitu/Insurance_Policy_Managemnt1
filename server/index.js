@@ -6,6 +6,7 @@ const PoliciesRouter = require('./router/policyList-router');
 const PolicyDetailsRouter = require('./router/PolicyDetails-router');
 const AppliedPolicyListRouter = require('./router/appliedPolicy-router');
 const UserRouter = require('./router/user-router');
+const QueryRouter=require('./router/query-router')
 
 var app=express();
 
@@ -16,6 +17,7 @@ app.use("/api", PoliciesRouter);
 app.use("/api", PolicyDetailsRouter);
 app.use("/api", AppliedPolicyListRouter);
 app.use("/api", UserRouter);
+app.use("/api",QueryRouter);
 
 app.get("/", function(req,res)
 {

@@ -12,6 +12,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ApplyPolicyComponent } from './Components/apply-policy/apply-policy.component';
 import { UserDashboardComponent } from './Components/user-dashboard/user-dashboard.component';
 import { ViewAppliedPolicyComponent } from './Components/view-applied-policy/view-applied-policy.component';
+import { UserQuestionComponent } from './user-question/user-question.component';
+import { AdminQuestionComponent } from './admin-question/admin-question.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ViewAppliedPolicyComponent } from './Components/view-applied-policy/vie
     DashboardComponent,
     ApplyPolicyComponent,
     UserDashboardComponent,
-    ViewAppliedPolicyComponent
+    ViewAppliedPolicyComponent,
+    UserQuestionComponent,
+    AdminQuestionComponent
   ],
   imports: [
     BrowserModule,

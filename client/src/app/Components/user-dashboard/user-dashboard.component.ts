@@ -11,11 +11,17 @@ export class UserDashboardComponent {
   ngOnInit(): void {
     // Fetch initial data if needed
     this.onTabClick(2);
+    
   }
   username = this.usernameService.getUsername();
 
   tabIndex: any;
+
+ 
+
   onTabClick(index: number) {
     this.tabIndex = index;
   }
+
+   
 }

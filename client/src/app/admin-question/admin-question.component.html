@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>query List</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>question</th>
+                        <th>date</th>
+                        <th>comment</th>
+                        <th>cdate</th>
+                       
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let query of policies"> -->
+                    <tr *ngFor="let query of queryData">
+                        <td>{{ query.id }}</td>
+                        <td>{{ query.name }}</td>
+                        <td>{{ query.question }}</td>
+                        <td>{{ query.date}}</td>
+                        <td>{{ query.comment  }}</td>
+                        <td>{{ query.cdate}}</td>
+                        <td>
+                            <div class="options">
+                                <button class="btn btn-primary" (click)="updatequery(query)">update</button>
+                                 
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container1" *ngIf="showform">
+   
+  
+    <label for="subject">{{question}}</label>
+    <textarea id="subject" name="comment"  [(ngModel)]="comment" placeholder="Write something.." style="height:200px"></textarea>
+
+    
+    <button class="btn btn-success post" (click)="putquery()" > Post</button>
+
+  
+</div> 
+
