@@ -15,9 +15,36 @@
         <td>{{ policy.PolicyCategory }}</td>
         <td>{{ policy.Premium }}</td>
         <td>
-          <button class="btn btn-primary" (click)="applyForPolicy(policy)">Apply</button>
+          <button class="btn btn-primary" (click)="openform(policy)">Apply</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="form-wrapper" *ngIf="showform">
+  <div class="policyform">
+    <h2 class="text-dark text-center">{{formheader}}</h2>
+    <div class="group">
+      <label for="UserName">User Name</label>
+      <input type="text" class="form-control" [(ngModel)]="UserName" name="UserName" required>
+    </div>
+    <div class="group">
+      <label for="UserEmail">User Email</label>
+      <input type="text" class="form-control" [(ngModel)]="UserEmail" name="UserEmail" required>
+    </div>
+    <div class="group">
+      <label for="UserPhoneNUmber">User Phone NUmber</label>
+      <input type="text" class="form-control" [(ngModel)]="UserPhoneNUmber" name="UserPhoneNUmber" required maxlength="10">
+    </div>
+    <div class="group">
+      <label for="PolicyCategory">Policy Category</label>
+      <input type="text" class="form-control" [(ngModel)]="PolicyCategory" name="PolicyCategory" required disabled>
+    </div>
+
+    <div class="action" style="margin-top: 20px;">
+      <button style="margin-inline: 10px;" id="applypolicy" class="btn btn-primary save" (click)="applypolicy()">Submit</button>  
+      <button style="margin-inline: 10px;" class="btn btn-danger cancel" (click)="closeform()">Cancel</button>
+    </div>
+  </div>
 </div>

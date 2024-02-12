@@ -6,8 +6,10 @@ var Schema = mongoose.Schema;
 
 var AppliedPolicyModelSchema = new Schema(
     {   
-        ListId: Number,
-        PolicyAppliedUserName: String,
+        UserName: String,
+        UserEmail: String,
+        UserPhoneNUmber: Number,
+        PolicyCategory: String,
         Status: String
 
     }, 

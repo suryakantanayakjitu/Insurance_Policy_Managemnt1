@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
-import { PolicyService } from '../policy/policy.service'
+import { Component, OnInit } from '@angular/core';
+import { ApplyPolicyService } from './apply-policy.service';
+import { error } from 'console';
+
 @Component({
   selector: 'app-apply-policy',
   templateUrl: './apply-policy.component.html',
   styleUrl: './apply-policy.component.css'
 })
-export class ApplyPolicyComponent {
+export class ApplyPolicyComponent implements OnInit {
 
   policies: any[] = [];
-  constructor(private policyService: PolicyService) { }
+  showform: any = false;
+  PolicyCategory: any = "";
+  formheader!: string;
+  UserName: any;
+  UserEmail: any;
+  UserPhoneNUmber: any;
+
+  constructor(private policyService: ApplyPolicyService) { }
 
   ngOnInit(): void {
     this.loadPolicies();
@@ -25,10 +34,52 @@ export class ApplyPolicyComponent {
       }
     );
   }
+
+  closeform() {
+    this.showform = false;
+    this.clearform()
+  }
+  clearform() {
+    this.UserName = null;
+    this.UserEmail = null;
+    this.UserPhoneNUmber = null;
+  }
+
+  openform(data: any = null) {
+    // this.clearform();
+    this.showform = true;
+    this.UserName = "";
+    this.UserEmail = "";
+    this.UserPhoneNUmber = "";
+    this.PolicyCategory = data.PolicyCategory;
+    this.formheader = "Apply Policy"
+  }
+
+
   applyForPolicy(policy: any) {
-    // console.log(policy.PolicyCategory);
-    alert(`${policy.PolicyCategory} Policy Apply Sucessfuly.` );
-    throw new Error('Method not implemented.');
+    this.openform();
+  }
+
+
+  applypolicy() {
+    this.showform = false;
+    let body = {
+      username: this.UserName,
+      useremail: this.UserEmail,
+      userphonenUmber: this.UserPhoneNUmber,
+      policycategory: this.PolicyCategory,
+      status: "pending",
+    }
+    // console.log(body);
+    this.policyService.postpolicy(body).subscribe(
+      (res) => {
+        // alert(`Policy Apply Sucessfuly.`);
+        this.loadPolicies();
+      },
+      (error: any) => {
+        console.log("error while adding policy to server", error);
+      }
+    )
   }
 
 }

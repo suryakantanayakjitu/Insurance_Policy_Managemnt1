@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PolicyService } from './policy.service';
-import { error, log } from 'console';
+import { error} from 'console';
 
 @Component({
   selector: 'app-policy',
@@ -23,11 +23,6 @@ export class PolicyComponent implements OnInit {
   ngOnInit(): void {
     this.showPolicies();
   }
-  // ngAfterViewInit() {
-  //   // Call openform() after the view has been initialized
-  //   // this is used for alternatively hide the button when add button click update will hide and vice versa
-  //   this.openform();
-  // }
 
 
   openform(data: any = null) {

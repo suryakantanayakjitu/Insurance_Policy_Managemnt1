@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class PolicyService {
+export class AppliedPolicyService {
 
 //   public policy_Url ="http://localhost:3005/api/PolicyDetails";
   constructor(public HttpClient:HttpClient) { }

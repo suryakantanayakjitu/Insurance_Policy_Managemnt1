@@ -15,27 +15,31 @@ router.get("/getAppliedPolicies", async function (req, res) {
     }
 });
 
-// router.post('/addNewApplyPolicy', async function (req, res) {
-//     var applyNewPolicyObj = new AppliedPolicyListModel({
-//         ListId: req.body.listid,
-//         PolicyAppliedUserName: req.body.policyappliedusername,
-//         Status: "Pending"
-//     });
-//     let newObj = await applyNewPolicyObj.save();
-//     var result = {};
-//     result.status = "Record inserted in Database";
-//     console.log("[Create] - Record inserted in Database");
-//     res.send(result);
-// });
+router.post('/addNewApplyPolicy', async function (req, res) {
+    var applyNewPolicyObj = new AppliedPolicyListModel({
+        UserName: req.body.username,
+        UserEmail: req.body.useremail,
+        UserPhoneNUmber: req.body.userphonenUmber,
+        PolicyCategory: req.body.policycategory,
+        Status: "Pending"
+    });
+    let newObj = await applyNewPolicyObj.save();
+    var result = {};
+    result.status = "Record inserted in Database";
+    console.log("[Create] - Record inserted in Database");
+    res.send(result);
+});
 
 router.put('/updateAppliedPolicy', async function (req, res) {
     var appliedPolicyObj = {};
-        appliedPolicyObj.ListId=  req.body.listid;
-        appliedPolicyObj.PolicyAppliedUserName=  req.body.policyappliedusername;
+        appliedPolicyObj.UserName=  req.body.username;
+        appliedPolicyObj.UserEmail=  req.body.useremail;
+        appliedPolicyObj.UserPhoneNUmber=  req.body.userphonenUmber;
+        appliedPolicyObj.PolicyCategory=  req.body.policycategory;
         appliedPolicyObj.Status=  req.body.status;
 
     let updateDetails = await AppliedPolicyListModel.findOneAndUpdate(
-        { ListId: appliedPolicyObj.ListId }, { $set: appliedPolicyObj });
+        { UserName: appliedPolicyObj.UserName }, { $set: appliedPolicyObj });
 
     var result = {};
     result.status = "Record updated in Database";

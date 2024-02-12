@@ -1,1 +1,29 @@
-<p>view-applied-policy works!</p>
+<!-- view-applied-policy.component.html -->
+<div class="container">
+    <h2>Applied Policy Details</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>User Phone Number</th>
+                <th>Policy Category</th>
+                <th>Status</th>
+                <th style="width: 250px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let detail of appliedDetails">
+                <td>{{ detail.UserName }}</td>
+                <td>{{ detail.UserEmail }}</td>
+                <td>{{ detail.UserPhoneNUmber }}</td>
+                <td>{{ detail.PolicyCategory }}</td>
+                <td>{{ detail.Status }}</td>
+                <td>
+                    <button *ngIf="detail.Status !== 'Approved' && detail.Status !== 'Rejected'" class="btn btn-success" (click)="approvePolicy(detail.UserName, detail)">Approve</button>
+                    <button *ngIf="detail.Status !== 'Approved' && detail.Status !== 'Rejected'" class="btn btn-danger" (click)="rejectPolicy(detail.UserName, detail)">Reject</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
