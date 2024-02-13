@@ -26,25 +26,24 @@ export class ViewAppliedPolicyComponent implements OnInit{
     );
   }
 
-  approvePolicy(userName: String, detail: any): void {
+  approvePolicy(Id: Number, detail: any): void {
     let body = {
-      username : userName,
       status: "Approved"
     }
-    this.AppliedpolicyService.updateappliedpolicy(body).subscribe(
+    this.AppliedpolicyService.updateappliedpolicy(Id,body).subscribe(
       (data:any) => {
         detail.Status =  "Approved";
+        alert("id number is " + Id)
         this.loadAppliedDetails();
       }
     )
   }
 
-  rejectPolicy(userName: String, detail: any): void {
+  rejectPolicy(Id: Number, detail: any): void {
     let body = {
-      username : userName,
       status: "Rejected"
     }
-    this.AppliedpolicyService.updateappliedpolicy(body).subscribe(
+    this.AppliedpolicyService.updateappliedpolicy(Id,body).subscribe(
       (data:any) => {
         detail.Status = "Rejected";
         this.loadAppliedDetails();

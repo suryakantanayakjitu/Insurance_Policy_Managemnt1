@@ -4,6 +4,7 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
+                <th>Sl. No</th>
                 <th>User Name</th>
                 <th>User Email</th>
                 <th>User Phone Number</th>
@@ -14,14 +15,15 @@
         </thead>
         <tbody>
             <tr *ngFor="let detail of appliedDetails">
+                <td>{{ detail.Id }}</td>
                 <td>{{ detail.UserName }}</td>
                 <td>{{ detail.UserEmail }}</td>
                 <td>{{ detail.UserPhoneNUmber }}</td>
                 <td>{{ detail.PolicyCategory }}</td>
                 <td>{{ detail.Status }}</td>
                 <td>
-                    <button *ngIf="detail.Status !== 'Approved' && detail.Status !== 'Rejected'" class="btn btn-success" (click)="approvePolicy(detail.UserName, detail)">Approve</button>
-                    <button *ngIf="detail.Status !== 'Approved' && detail.Status !== 'Rejected'" class="btn btn-danger" (click)="rejectPolicy(detail.UserName, detail)">Reject</button>
+                    <button *ngIf="detail.Status !== 'Approved' && detail.Status !== 'Rejected'" class="btn btn-success" (click)="approvePolicy(detail.Id , detail)">Approve</button>
+                    <button *ngIf="detail.Status !== 'Approved' && detail.Status !== 'Rejected'" class="btn btn-danger" (click)="rejectPolicy(detail.Id , detail)">Reject</button>
                 </td>
             </tr>
         </tbody>

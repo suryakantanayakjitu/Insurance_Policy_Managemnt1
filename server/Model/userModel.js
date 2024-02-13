@@ -7,6 +7,9 @@ var Schema = mongoose.Schema;
 var UserModelSchema = new Schema(
     {   
         UserID: String,
+        UserEmail: String,
+        UserPhoneNumber: Number,
+        Location: String,
         Password: String
     }, 
     { versionKey: false  } );

@@ -11,7 +11,7 @@ export class ApplyPolicyComponent implements OnInit {
 
   policies: any[] = [];
   showform: any = false;
-  PolicyCategory: any = "";
+  PolicyCategory!: any ;
   formheader!: string;
   UserName: any;
   UserEmail: any;
@@ -73,7 +73,7 @@ export class ApplyPolicyComponent implements OnInit {
     // console.log(body);
     this.policyService.postpolicy(body).subscribe(
       (res) => {
-        // alert(`Policy Apply Sucessfuly.`);
+        alert(`Policy Apply Sucessfuly.`);
         this.loadPolicies();
       },
       (error: any) => {

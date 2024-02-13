@@ -13,7 +13,7 @@ export class AppliedPolicyService {
     return this.HttpClient.get<any[]>('http://localhost:3005/api/getAppliedPolicies');
   }
 
-  updateappliedpolicy(body:any){
-    return this.HttpClient.put('http://localhost:3005/api/updateAppliedPolicy',body)
+  updateappliedpolicy(Id: Number,body:any){
+    return this.HttpClient.put(`http://localhost:3005/api/updateAppliedPolicy/${Id}`, body)
   }
 }

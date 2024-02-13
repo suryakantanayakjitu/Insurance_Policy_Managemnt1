@@ -14,6 +14,8 @@ import { UserDashboardComponent } from './Components/user-dashboard/user-dashboa
 import { ViewAppliedPolicyComponent } from './Components/view-applied-policy/view-applied-policy.component';
 import { UserQuestionComponent } from './user-question/user-question.component';
 import { AdminQuestionComponent } from './admin-question/admin-question.component';
+import { SignupComponent } from './signup/signup.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AdminQuestionComponent } from './admin-question/admin-question.componen
     UserDashboardComponent,
     ViewAppliedPolicyComponent,
     UserQuestionComponent,
-    AdminQuestionComponent
+    AdminQuestionComponent,
+    SignupComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
