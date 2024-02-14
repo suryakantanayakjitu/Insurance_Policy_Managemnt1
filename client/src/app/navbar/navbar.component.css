@@ -1,37 +1,71 @@
-.navbar{
+.navbar {
+    background-color: rgb(20, 21, 29);
+    height: 55px;
+
+}
+.nav-link {
+    color: aliceblue;
+    /* background-color: brown; */
+    /* border: solid; */
+    margin-right: 10px;
+    height: 3.5rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+     align-items: center;
+     border-radius: 2px;
+     font-size: 20px;
+     font-weight: 400;
+
+}
+
+.nav-link:hover {
+    background-color: azure;
+    color: black;
+
+}
+.navbar-brand{
+    color: aliceblue;
+    font-weight: 700;
+}
+
+
+
+.navbar-nav {
+    /* background-color: rgb(241, 211, 100); */
     width: 100%;
-    z-index: 100000;
-    border-radius: 0;
-    margin-bottom: 0px;
-    top: 0px;
-    background: #004098;
-}
-.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand{
-    color: #ffffff;
-}
-.navbar-light .navbar-brand:hover{
-    color: #ffffff;
-}
-.navbar .AmazonLogo{
-    width: 20%;
-    margin-left: 3rem;
-}
-#navbarNav{
-    margin-right: 3rem;
-}
-.navbar .collapse .part1{
-    width: 50%;
-}
-#navbarNav .part2{
-    width: 35%;
-}
-.navbar .collapse .part3{
-    width: 15%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content:space-evenly;
+    margin-left: 200px;
+    margin-right: 20px;
+    height: 3.5rem;
+
 }
+
+
+ 
+ 
+.menubar{
+    display: flex;
+    text-decoration: none;
+    list-style-type:none;
+    color: azure;
+    justify-content: center;
+    align-items: center;
+     
+     
+}
+ 
+.dropdown-item{
+    margin-top: 8px;
+    text-align: center;
+    /* background-color: red; */
+    width: 100px;
+
+}
+
+.dropdown-item:hover{
+    border: .5px solid white;
+    border-radius: 2px;
+}
+
+ 
+ 

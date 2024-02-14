@@ -1,0 +1,13 @@
+.container{
+    margin-top: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 500px;
+    background-color: darkgray;
+    height: 330px;
+
+}
+
+h2{
+    text-align: center;
+}

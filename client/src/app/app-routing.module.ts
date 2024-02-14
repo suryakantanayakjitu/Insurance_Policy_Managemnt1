@@ -4,13 +4,15 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { UserDashboardComponent } from './Components/user-dashboard/user-dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path:"dashboard", component:DashboardComponent},
   {path:"userDashboard", component:UserDashboardComponent},
   {path:"login", component:LoginComponent},
   {path:"signup", component:SignupComponent},
-  // {path:"", component:NavbarComponent},
+  {path:"home", component:HomeComponent},
+  {path:"", component:HomeComponent}
 ];
 
 @NgModule({

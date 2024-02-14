@@ -21,6 +21,7 @@ export class UserDashboardComponent {
 
   onTabClick(index: number) {
     this.tabIndex = index;
+   
   }
 
    
