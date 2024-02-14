@@ -16,6 +16,7 @@ import { UserQuestionComponent } from './user-question/user-question.component';
 import { AdminQuestionComponent } from './admin-question/admin-question.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeComponent } from './home/home.component';
     UserQuestionComponent,
     AdminQuestionComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
