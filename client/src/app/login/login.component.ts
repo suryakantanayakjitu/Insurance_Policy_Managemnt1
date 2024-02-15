@@ -29,9 +29,8 @@ export class LoginComponent {
           this.username = this.userApi.setUsername("admin");
           this.router.navigate(['/dashboard']);
         } else {
-          // Redirect to the user dashboard if the credentials are incorrect
+          // Redirect to the user dashboard if the credentials are not admin
           this.username = this.userApi.setUsername(data.data.UserID);
-          this.router.navigate(['/dashboard']);
           this.router.navigate(['/userDashboard']);
         }
       }
