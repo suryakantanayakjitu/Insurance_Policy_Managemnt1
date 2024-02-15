@@ -11,16 +11,20 @@
                     <a class="nav-link" routerLink="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/dashboard">Admin Dashboard</a>
+                    <a class="nav-link" routerLink="/dashboard" *ngIf="userApi.status">Admin Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/userDashboard">User Dashboard</a>
+                    <a class="nav-link" routerLink="/userDashboard" >User Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/signup">Register</a>
+                    <a class="nav-link" routerLink="/signup" *ngIf="!userApi.status">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">Login</a>
+                    <a class="nav-link" routerLink="/login" *ngIf="!userApi.status">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login"(click)="logout()"*ngIf="userApi.status">Logout</a>
                 </li>
 
             </ul>

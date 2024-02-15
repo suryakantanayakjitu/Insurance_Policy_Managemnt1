@@ -19,6 +19,8 @@ export class LoginComponent {
     }
     this.userApi.validate(body).subscribe(
       (data: any) => {
+        this.userApi.status=data;
+        console.log("login data",data);
         if(data.data  == null){
           alert(`${this.username} Does not Exist.`)
         }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../login/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+
+  constructor( public userApi: UserService) { }
+
+
+  logout(){
+    
+    this.userApi.status=null;
+  }
 }

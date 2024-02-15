@@ -8,6 +8,9 @@ export class UserService {
 
   constructor(public HttpClient:HttpClient) { }
 
+  status:any=null;
+  
+
   validate(body:any){
     return this.HttpClient.post('http://localhost:3005/api/loginvalidate', body);
   }
