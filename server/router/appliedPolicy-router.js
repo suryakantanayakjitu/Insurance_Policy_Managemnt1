@@ -1,6 +1,7 @@
 const express = require("express");
 const AppliedPolicyListModel = require('../Model/appliedPolicyModel');
 const router = express.Router();
+let counter = 0;
 
 router.get("/getAppliedPolicies", async function (req, res) {
 
@@ -16,7 +17,9 @@ router.get("/getAppliedPolicies", async function (req, res) {
 });
 
 router.post('/addNewApplyPolicy', async function (req, res) {
+    counter++;
     var applyNewPolicyObj = new AppliedPolicyListModel({
+        Id: counter,
         UserName: req.body.username,
         UserEmail: req.body.useremail,
         UserPhoneNUmber: req.body.userphonenUmber,
@@ -30,7 +33,8 @@ router.post('/addNewApplyPolicy', async function (req, res) {
     res.send(result);
 });
 
-router.put('/updateAppliedPolicy', async function (req, res) {
+router.put('/updateAppliedPolicy/:id', async function (req, res) {
+    var id=  req.params.id;
     var appliedPolicyObj = {};
         appliedPolicyObj.UserName=  req.body.username;
         appliedPolicyObj.UserEmail=  req.body.useremail;
@@ -39,23 +43,23 @@ router.put('/updateAppliedPolicy', async function (req, res) {
         appliedPolicyObj.Status=  req.body.status;
 
     let updateDetails = await AppliedPolicyListModel.findOneAndUpdate(
-        { UserName: appliedPolicyObj.UserName }, { $set: appliedPolicyObj });
+        { Id: id}, { $set: appliedPolicyObj });
 
     var result = {};
     result.status = "Record updated in Database";
-    console.log("[Update] - Record updated in Database");
+    console.log("[Update] - Record updated in Database", id, appliedPolicyObj);
     res.send(result);
 });
 
 
-// router.delete('/deleteAppliedPolicy/:id', async function(req, res){
-//     let pid= parseInt(req.params.id);
-//     let resresult = await AppliedPolicyListModel.findOneAndDelete({ ListId: pid});
+router.delete('/deleteAppliedPolicy/:id', async function(req, res){
+    let pid= parseInt(req.params.id);
+    let resresult = await AppliedPolicyListModel.findOneAndDelete({ ListId: pid});
     
-// 	var result = {};
-// 	result.status  = "Record deleted from Database";
-// 	console.log("[Delete] - Record deleted from Database");
-// 	res.send(result);
-// })
+	var result = {};
+	result.status  = "Record deleted from Database";
+	console.log("[Delete] - Record deleted from Database");
+	res.send(result);
+})
 
 module.exports = router;
