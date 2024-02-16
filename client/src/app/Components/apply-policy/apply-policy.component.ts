@@ -46,7 +46,7 @@ export class ApplyPolicyComponent implements OnInit {
   }
 
   openform(data: any = null) {
-    // this.clearform();
+    this.clearform();
     this.showform = true;
     this.UserName = "";
     this.UserEmail = "";

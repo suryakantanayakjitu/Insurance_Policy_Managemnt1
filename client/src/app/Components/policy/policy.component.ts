@@ -58,15 +58,6 @@ export class PolicyComponent implements OnInit {
 
 
   showPolicies(): void {
-    // this.http.get<any[]>('http://localhost:3005/api/getPolicies').subscribe(
-    //   (data: any[]) => {
-    //     this.policies = data;
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching policies:', error);
-    //     // Handle error
-    //   }
-    // );
     this.policyGetApi.getpolicy().subscribe(
       (data: any[]) => {
         this.policies = data;
@@ -123,13 +114,4 @@ export class PolicyComponent implements OnInit {
         
       })
   }
-  
-  //   updatePolicy(policy: any): void {
-  //     this.openform(policy);
-  //   }
-
-  // addNewPolicy(){
-  //   this.openform();
-  // }
-
 }
